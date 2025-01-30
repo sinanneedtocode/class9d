@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 9-D Memories 2024-25</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #f472b6;
+            --accent: #fcd34d;
+            --text: #1f2937;
+            --bg-light: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Student Spotlights */
+        .spotlights {
+            margin: 4rem 0;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .student-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Messages Wall */
+        .messages-wall {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .message-form {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .message-form input,
+        .message-form textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+        }
+
+        .messages-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .message {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Interactive Timeline */
+        .timeline {
+            position: relative;
+            margin: 4rem 0;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 50%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-content {
+                width: 90%;
+                margin: 0 0 0 10% !important;
+            }
+
+            .timeline-content::before {
+                left: -30px;
+            }
+        }
+        .memories-gallery {
+    margin: 4rem 0;
+}
+
+.memories-gallery h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    font-size: 2.5rem;
+}
+
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.memory-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.memory-item:hover {
+    transform: scale(1.02);
+}
+
+.memory-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.memory-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.memory-item:hover .memory-caption {
+    transform: translateY(0);
+}
+
+/* Make first item span two columns and rows */
+.memory-item.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.memory-item.featured img {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .memories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .memory-item.featured {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+.video-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.video-item video {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.video-item:hover {
+    transform: scale(1.02);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Class 9-D</h1>
+            <p>2024-2025: Our Unforgettable Journey</p>
+        </header>
+
+        <!-- Photo Gallery -->
+        <section class="gallery">
+            <div class="gallery-item">
+                <img src="/Pics/ClassPhoto.jpg" alt="Class Photo">
+                <div class="gallery-caption">Class Photo Day</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/Pics/ChildrensDay.jpg" alt="Sports Day">
+                <div class="gallery-caption">Childerns Day</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/Pics/ecpo.png" alt="Science Fair">
+                <div class="gallery-caption">EXPO 2024</div>
+            </div>
+        </section>
+
+        <!--Gallery-->
+        <section class="memories-gallery">
+            <h2>Memories Gallery</h2>
+            <div class="memories-grid">
+                <div class="memory-item">
+                    <img src="/Pics/mustafa.jpg" alt="Mustafa">
+                    <div class="memory-caption">Mustafa lmaoo</div>
+                </div>
+                <div class="memory-item">
+                    <img src="/Pics/group.jpg" alt="Childrens Day">
+                    <div class="memory-caption">Childrens Day</div>
+                </div>
+                <div class="memory-item">
+                    <img src="/Pics/TeachersDay.jpg" alt="Teachers Day">
+                    <div class="memory-caption">Teachers Day</div>
+                </div>
+                <div class="memory-item video-item">
+                    <video controls>
+                        <source src="/Pics/fight.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="memory-caption">Nilafar ma'am prank</div>
+                </div>
+                <div class="memory-item video-item">
+                    <video controls>
+                        <source src="/Pics/maam.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="memory-caption">Nilafar ma'am prank</div>
+                </div>
+                </div>
+                <div class="memory-item">
+                    <img src="/Pics/ArabicDay.jpg" alt="Arabic Day">
+                    <div class="memory-caption">Arabic Day</div>
+                </div>
+                <div class="memory-item">
+                    <img src="/Pics/Farewell.jpg" alt="Farewell">
+                    <div class="memory-caption">Farewell</div>
+                </div>
+                <div class="memory-item">
+                    <img src="/Pics/Assembly.jpg" alt="Assembly">
+                    <div class="memory-caption">Class Assembly</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Spotlights -->
+        <section class="spotlights">
+            <h2>Student Spotlights</h2>
+            <div class="spotlight-grid" id="spotlightGrid">
+                <!-- Student cards will be added here by JavaScript -->
+            </div>
+        </section>
+
+    <script>
+        
+        // Sample student data
+        const students = [
+            {
+                name: "manutd🗣 (Fardeen)",
+                photo: "/Pics/Fardeen.jpg",
+                achievement: "Best edited teachers pics (Group Profile)",
+                quote: "i like sleep"
+            },
+            {
+                name: "Femboy :P (Siyan)",
+                photo: "/Pics/Siyan.jpg",
+                achievement: "Finished 100 animes in year, Weeb",
+                quote: "Lifes hard but Im harder"
+            },
+            {
+                name: "Twink :33 (Sinan)",
+                photo: "/Pics/Sinan.jpg",
+                achievement: "Made this website, Part of UDST competition winning team",
+                quote: "i made this shi  :3"
+            },
+            {
+                name: "Swag (Hadi)",
+                photo: "/Pics/Hadi.jpg",
+                achievement: "got interviewed by alkass sports channel as one of the underrated young talents",
+                quote: "swag it out"
+            },
+            {
+                name: "Shawarma (Shahama)",
+                photo: "/Pics/Shahama.jpg",
+                achievement: "Consecutive school topper, Part of UDST competition winning team, Helped with this website",
+                quote: "Always at the top"
+            },
+            {
+                name: "chemmeen 🦐(Suha)",
+                photo: "/Pics/Suha.jpg",
+                achievement: "In love with maths, Islamic",
+                quote: ""
+            },
+            {
+                name: "Mufasa (Mustafa)",
+                photo: "/Pics/Mustafapfp.jpg",
+                achievement: "Kavitha ma'ams worst student , Nilafar Mam's fav student 😤👅",
+                quote: "Just watch"
+            },
+            {
+                name: "MAGAMIND (Aafia)",
+                photo: "/Pics/Aafia.jpg",
+                achievement: "Got picked by the school for U-19 team as a 13 year old, Long jump twice gold medalist",
+                quote: "Play hard, tease harder"
+            },
+            {
+                name: "skibidi rizzler (Aneeq)",
+                photo: "/Pics/",
+                achievement: "",
+                quote: "swag it out"
+            },
+            
+        ];
+
+        // Populate student spotlights
+        function createStudentCards() {
+            const spotlightGrid = document.getElementById('spotlightGrid');
+            students.forEach(student => {
+                const card = document.createElement('div');
+                card.className = 'student-card';
+                card.innerHTML = `
+                    <img src="${student.photo}" alt="${student.name}" class="student-photo">
+                    <h3>${student.name}</h3>
+                    <p>${student.achievement}</p>
+                    <p><em>"${student.quote}"</em></p>
+                `;
+                spotlightGrid.appendChild(card);
+            });
+        }
+
+
+        // Initialize page
+        window.addEventListener('load', () => {
+            createStudentCards();
+        });
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effects to gallery
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            item.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+       
+    </script>
+
+</html>
