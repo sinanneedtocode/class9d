@@ -358,6 +358,45 @@
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
+        .audio-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-toggle {
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+}
+
+.music-icon {
+    color: white;
+    font-size: 20px;
+}
+
+.music-toggle.playing {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
     </style>
 </head>
 <body>
@@ -456,7 +495,15 @@
                 <!-- Student cards will be added here by JavaScript -->
             </div>
         </section>
-
+        <div class="audio-player">
+            <audio id="bgMusic" loop>
+                <source src="Pics/Young & Dumb.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button id="toggleMusic" class="music-toggle">
+                <span class="music-icon">🎵</span>
+            </button>
+        </div>
     <script>
         
         // Sample student data
@@ -565,7 +612,28 @@
                 this.style.transform = 'scale(1)';
             });
         });
-       
+        document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('bgMusic');
+    const toggleButton = document.getElementById('toggleMusic');
+    
+    // Start playing when user interacts with the page
+    document.addEventListener('click', function initAudio() {
+        audio.play().catch(function(error) {
+            console.log("Audio autoplay failed:", error);
+        });
+        document.removeEventListener('click', initAudio);
+    }, { once: true });
+    
+    toggleButton.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            toggleButton.classList.add('playing');
+        } else {
+            audio.pause();
+            toggleButton.classList.remove('playing');
+        }
+    });
+});
     </script>
 
 </html>
