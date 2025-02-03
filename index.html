@@ -486,6 +486,80 @@
         font-size: 1rem;
     }
 }
+.teacher-spotlight {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    background: linear-gradient(45deg, var(--card-bg), var(--accent));
+    border: 2px solid var(--primary);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.teacher-spotlight::before {
+    content: '✨ Class Teacher ✨';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.teacher-spotlight .student-photo {
+    width: 200px;
+    height: 200px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.teacher-spotlight h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.teacher-spotlight p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-spotlight em {
+    color: var(--primary-light);
+}
+
+@media (max-width: 768px) {
+    .teacher-spotlight {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .teacher-spotlight .student-photo {
+        margin: 0 auto;
+    }
+}
+
+/* Add a subtle animation for the teacher card */
+.teacher-spotlight {
+    animation: teacherCardFade 1s ease-in;
+}
+
+@keyframes teacherCardFade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
     </style>
 </head>
 <body>
@@ -635,6 +709,13 @@
         // Sample student data
         const students = [
             {
+                name: "Ms. Nilafar",
+                photo: "/Pics/ClassTeacher.jpg",
+                achievement: "Being the Class Teacher of IX D is my proudest Achievement so far..",
+                quote: "Happy Teachers create Happy Classrooms..",
+                isTeacher: true
+            },
+            {
                 name: "skibidi rizzler (Aneeq)",
                 photo: "Pics/aneeq.png",
                 achievement: "i have achieved the title of being the skibidiest of everything and everyone (mirror mirror on the wall whos the skibidiest of them all?)",
@@ -679,7 +760,7 @@
             {
                 name: "Mufasa (Mustafa)",
                 photo: "Pics/Mustafapfp.jpg",
-                achievement: "Kavitha ma'ams worst student , Nilafar Mam's fav student 😤👅",
+                achievement: "Nilafar Mam's fav student 😤👅",
                 quote: "Just watch"
             },
             {
@@ -691,14 +772,14 @@
             {
                 name: "manutd🗣 (Fardeen)",
                 photo: "Pics/Fardeen.jpg",
-                achievement: "Best edited teachers pics (Group Profile)",
+                achievement: "Group Profile maker",
                 quote: "i like sleep"
             },
             {
                 name: "(Shifa)",
-                photo: "Pics/Fardeen.jpg",
-                achievement: "Best edited teachers pics (Group Profile)",
-                quote: "i like sleep"
+                photo: "Pics/shifa.jpg",
+                achievement: "Got first prize in kalanjali oppana",
+                quote: "It's better to live than dying❤️‍🩹"
             },
             {
                 name: "Drunk (Hamda)",
@@ -712,18 +793,18 @@
         // Populate student spotlights
         function createStudentCards() {
             const spotlightGrid = document.getElementById('spotlightGrid');
-            students.forEach(student => {
-                const card = document.createElement('div');
-                card.className = 'student-card';
-                card.innerHTML = `
-                    <img src="${student.photo}" alt="${student.name}" class="student-photo">
-                    <h3>${student.name}</h3>
-                    <p>${student.achievement}</p>
-                    <p><em>"${student.quote}"</em></p>
-                `;
-                spotlightGrid.appendChild(card);
-            });
-        }
+            students.forEach(person => {
+            const card = document.createElement('div');
+            card.className = person.isTeacher ? 'student-card teacher-spotlight' : 'student-card';
+            card.innerHTML = `
+            <img src="${person.photo}" alt="${person.name}" class="student-photo">
+            <h3>${person.name}</h3>
+            <p>${person.achievement}</p>
+            <p><em>"${person.quote}"</em></p>
+            `;
+            spotlightGrid.appendChild(card);
+    });
+}
 
 
         // Initialize page
