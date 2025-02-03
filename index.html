@@ -397,6 +397,95 @@
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
+.teacher-tribute {
+    margin: 6rem 0;
+    animation: fadeIn 1.5s ease-in;
+}
+
+.tribute-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.teacher-card, .class-message {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: relative;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease;
+}
+
+.teacher-card:hover, .class-message:hover {
+    transform: translateY(-5px);
+}
+
+.teacher-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    display: block;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.teacher-tribute h2 {
+    text-align: center;
+    color: var(--text);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.quote-marks {
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.5;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.quote-marks.closing {
+    top: auto;
+    left: auto;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.teacher-message, .class-message p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    opacity: 0.9;
+    text-align: justify;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .teacher-tribute {
+        margin: 3rem 0;
+    }
+
+    .teacher-card, .class-message {
+        padding: 2rem;
+    }
+
+    .quote-marks {
+        font-size: 3rem;
+    }
+
+    .teacher-message, .class-message p {
+        padding: 0 1rem;
+        font-size: 1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -504,6 +593,35 @@
                 <span class="music-icon">🎵</span>
             </button>
         </div>
+        <section class="teacher-tribute">
+            <div class="tribute-content">
+                <div class="teacher-card">
+                    <img src="/Pics/ClassTeacher.jpg" alt="Class Teacher" class="teacher-photo">
+                    <h2>Thank You, Ms. Nilafar</h2>
+                    <div class="quote-marks">❝</div>
+                    <p class="teacher-message">
+                        Dear Ms. Nilafar,
+                        
+                        Thank you for being more than just our teacher - you've been our guide, mentor, and sometimes even our partner in crime! Your patience with our chaos, your understanding during our struggles, and your encouragement in our achievements have made this year unforgettable. You've taught us not just our subjects, but also valuable life lessons that we'll carry forever.
+        
+                        You've handled our class's energy with grace and humor, turning even our most mischievous moments into learning opportunities. Your dedication to making sure we all succeed, while still letting us be ourselves, has made 9-D feel like a family.
+                    </p>
+                    <div class="quote-marks closing">❞</div>
+                </div>
+        
+                <div class="class-message">
+                    <h2>To Class 9-D</h2>
+                    <div class="quote-marks">❝</div>
+                    <p>
+                        From first day jitters to final day tears, we've been through it all together. Every laugh we shared, every challenge we faced, and every memory we created has made this year special. We may have been the class that gave teachers headaches, but we were also the class that stuck together through thick and thin.
+        
+                        To all the friendships formed, the inside jokes created, the study sessions that turned into gossip sessions, and the countless moments that made our year memorable - thank you. Whether we were pranking teachers, struggling through math, or celebrating our achievements, we did it as one.
+        
+                        As we move forward, let's carry these memories with us. Here's to 9-D - the class that wasn't just a class, but a family of mischief-makers, dreamers, and friends for life!
+                    </p>
+                    <div class="quote-marks closing">❞</div>
+                </div>
+            </div>
     <script>
         
         // Sample student data
