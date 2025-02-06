@@ -680,6 +680,7 @@
         
                         You've handled our class's energy with grace and humor, turning even our most mischievous moments into learning opportunities. Your dedication to making sure we all succeed, while still letting us be ourselves, has made 9-D feel like a family.
                         <br>
+                        <br>
                         <strong>Messages from your students:</strong>
                         <br>
                         • Mustafa:<em> ”best teacher of 9th”</em>
@@ -689,6 +690,9 @@
                         • Sinan:<em> ”I hope your our class teacher in 10th”</em>
                         <br>
                         • Siyan:<em> ”One of the best teachers”</em>
+                        <br>
+                        • Shifa:<em> ”Mam your English was Englishing. but my discipline wasn't disciplining and iam sorry about that 😭 .I love you a lot 💗”</em>
+
                     </p>
                     <div class="quote-marks closing">❞</div>
                 </div>
@@ -708,7 +712,7 @@
             </div>
     <script>
         
-        // Sample student data
+        //data
         const students = [
             {
                 name: "Ms. Nilafar",
@@ -795,10 +799,15 @@
                 achievement: "Gold medal in cluster, Got 25/25 in physics in model exam",
                 quote: "Don’t like it? I don’t care."
             },
-            
+            {
+                name: "(Aathifa)",
+                photo: "Pics/aathifa.jpg",
+                achievement: "Part of UDST competition winning team, Logo making 1st prize",
+                quote: ""
+            },
         ];
 
-        // Populate student spotlights
+        //the student card
         function createStudentCards() {
             const spotlightGrid = document.getElementById('spotlightGrid');
             students.forEach(person => {
@@ -815,12 +824,12 @@
 }
 
 
-        // Initialize page
+        //start page
         window.addEventListener('load', () => {
             createStudentCards();
         });
 
-        // Add smooth scrolling
+        //dono if these work but smooth scrolling 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -830,7 +839,7 @@
             });
         });
 
-        // Add hover effects to gallery
+        //gallery hover effect
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('mouseover', function() {
                 this.style.transform = 'scale(1.05)';
@@ -843,7 +852,7 @@
     const audio = document.getElementById('bgMusic');
     const toggleButton = document.getElementById('toggleMusic');
     
-    // Start playing when user interacts with the page
+    //song player thing
     document.addEventListener('click', function initAudio() {
         audio.play().catch(function(error) {
             console.log("Audio autoplay failed:", error);
