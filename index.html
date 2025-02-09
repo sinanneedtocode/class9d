@@ -1,881 +1,960 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 9-D Memories 2024-25</title>
-    <style>
-        :root {
-            --primary: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary: #f472b6;
-            --accent: #fcd34d;
-            --text: #1f2937;
-            --bg-light: #f3f4f6;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Header Styles */
-        .header {
-            text-align: center;
-            padding: 3rem 0;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .header h1 {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header p {
-            font-size: 1.5rem;
-            color: var(--text);
-            opacity: 0.8;
-        }
-
-        /* Photo Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-
-        /* Student Spotlights */
-        .spotlights {
-            margin: 4rem 0;
-        }
-
-        .spotlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .student-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .student-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-        }
-
-        .student-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* Messages Wall */
-        .messages-wall {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            margin: 3rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .message-form {
-            display: grid;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .message-form input,
-        .message-form textarea {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--primary-light);
-        }
-
-        .messages-container {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .message {
-            background: var(--bg-light);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            animation: slideIn 0.3s ease;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-20px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Interactive Timeline */
-        .timeline {
-            position: relative;
-            margin: 4rem 0;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary);
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: center;
-            padding: 2rem 0;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            width: 45%;
-            position: relative;
-            animation: fadeIn 1s ease;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 50%;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 50%;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 3rem;
-            }
-
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-content {
-                width: 90%;
-                margin: 0 0 0 10% !important;
-            }
-
-            .timeline-content::before {
-                left: -30px;
-            }
-        }
-        .memories-gallery {
-    margin: 4rem 0;
-}
-
-.memories-gallery h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--primary);
-    font-size: 2.5rem;
-}
-
-.memories-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.memory-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.memory-item:hover {
-    transform: scale(1.02);
-}
-
-.memory-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.memory-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    padding: 1rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-}
-
-.memory-item:hover .memory-caption {
-    transform: translateY(0);
-}
-
-/* Make first item span two columns and rows */
-.memory-item.featured {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.memory-item.featured img {
-    height: 100%;
-}
-
-@media (max-width: 768px) {
-    .memories-grid {
-        grid-template-columns: 1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 9-D Memories 2024-25</title>
+  <!-- Import a fun font for the header -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FFB347;        /* Honey gold */
+      --primary-light: #FFD699;  /* Light honey */
+      --secondary: #FF9EB5;      /* Blush pink */
+      --accent: #D8BFD8;         /* Fairy lavender */
+      --text: #4A2C2A;           /* Warm brown */
+      --bg-light: #FFF5E6;       /* Creamy white */
+      --card-bg: #ffffff;
+      --border: #e0e0e0;
     }
-    
-    .memory-item.featured {
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #FFF5E6 0%, #FFEBD6 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header Styles */
+    .header {
+      text-align: center;
+      padding: 3rem 0;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+    }
+
+    .header h1 {
+      font-size: 4rem;
+      /* Use a playful script font */
+      font-family: 'Pacifico', cursive;
+      /* Apply a fun gradient text effect */
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
+    }
+
+    .header p {
+      font-size: 1.5rem;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, 
+          rgba(255, 255, 255, 0.4) 0%, 
+          rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+
+    /* Photo Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to right, rgba(255, 158, 181, 0.9), rgba(255, 179, 71, 0.9));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    /* Student Spotlights */
+    .spotlights {
+      margin: 4rem 0;
+    }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .student-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .student-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    }
+
+    .student-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Messages Wall */
+    .messages-wall {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 3rem 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .message-form {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .message-form input,
+    .message-form textarea {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn {
+      background: var(--secondary);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .messages-container {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .message {
+      background: var(--bg-light);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      animation: slideIn 0.3s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Confetti Animation */
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Interactive Timeline */
+    .timeline {
+      position: relative;
+      margin: 4rem 0;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary);
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 45%;
+      position: relative;
+      animation: fadeIn 1s ease;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: 50%;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 50%;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 3rem;
+      }
+      .timeline::before {
+        left: 0;
+      }
+      .timeline-content {
+        width: 90%;
+        margin: 0 0 0 10% !important;
+      }
+      .timeline-content::before {
+        left: -30px;
+      }
+      .memories-grid {
+        grid-template-columns: 1fr;
+      }
+      .memory-item.featured {
         grid-column: auto;
         grid-row: auto;
-    }
-}
-.video-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.video-item video {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.video-item:hover {
-    transform: scale(1.02);
-}
-.body h1 {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        .audio-player {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.music-toggle {
-    background: var(--primary);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-}
-
-.music-toggle:hover {
-    transform: scale(1.1);
-}
-
-.music-icon {
-    color: white;
-    font-size: 20px;
-}
-
-.music-toggle.playing {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-.teacher-tribute {
-    margin: 6rem 0;
-    animation: fadeIn 1.5s ease-in;
-}
-
-.tribute-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-}
-
-.teacher-card, .class-message {
-    background: var(--card-bg);
-    border-radius: 1rem;
-    padding: 3rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    position: relative;
-    border: 1px solid var(--border);
-    transition: transform 0.3s ease;
-}
-
-.teacher-card:hover, .class-message:hover {
-    transform: translateY(-5px);
-}
-
-.teacher-photo {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: 0 auto 2rem;
-    display: block;
-    object-fit: cover;
-    border: 3px solid var(--primary);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-}
-
-.teacher-tribute h2 {
-    text-align: center;
-    color: var(--text);
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-}
-
-.quote-marks {
-    font-size: 4rem;
-    color: var(--primary);
-    opacity: 0.5;
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-}
-
-.quote-marks.closing {
-    top: auto;
-    left: auto;
-    bottom: 2rem;
-    right: 2rem;
-}
-
-.teacher-message, .class-message p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text);
-    opacity: 0.9;
-    text-align: justify;
-    padding: 0 2rem;
-    margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-    .teacher-tribute {
+      }
+      .teacher-tribute {
         margin: 3rem 0;
+      }
+      .teacher-card, .class-message {
+        padding: 2rem;
+      }
+      .quote-marks {
+        font-size: 3rem;
+      }
+      .teacher-message, .class-message p {
+        padding: 0 1rem;
+        font-size: 1rem;
+      }
+      .teacher-spotlight {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .teacher-spotlight .student-photo {
+        margin: 0 auto;
+      }
+    }
+
+    /* Memories Gallery */
+    .memories-gallery {
+      margin: 4rem 0;
+    }
+
+    .memories-gallery h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .memory-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .memory-item:hover {
+      transform: scale(1.02);
+    }
+
+    .memory-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .memory-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to right, rgba(255, 158, 181, 0.9), rgba(255, 179, 71, 0.9));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .memory-item:hover .memory-caption {
+      transform: translateY(0);
+    }
+
+    /* Featured memory item */
+    .memory-item.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .memory-item.featured img {
+      height: 100%;
+    }
+
+    /* Video items in memories */
+    .video-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .video-item video {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .video-item:hover {
+      transform: scale(1.02);
+    }
+
+    /* Audio Player */
+    .audio-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .music-toggle {
+      background: var(--primary);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .music-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .music-icon {
+      color: white;
+      font-size: 20px;
+    }
+
+    .music-toggle.playing {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Teacher Tribute */
+    .teacher-tribute {
+      margin: 6rem 0;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .tribute-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
     }
 
     .teacher-card, .class-message {
-        padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: relative;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .teacher-card:hover, .class-message:hover {
+      transform: translateY(-5px);
+    }
+
+    .teacher-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      display: block;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .teacher-tribute h2 {
+      text-align: center;
+      color: var(--text);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      letter-spacing: 2px;
     }
 
     .quote-marks {
-        font-size: 3rem;
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.5;
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+    }
+
+    .quote-marks.closing {
+      top: auto;
+      left: auto;
+      bottom: 2rem;
+      right: 2rem;
     }
 
     .teacher-message, .class-message p {
-        padding: 0 1rem;
-        font-size: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text);
+      opacity: 0.9;
+      text-align: justify;
+      padding: 0 2rem;
+      margin-bottom: 2rem;
     }
-}
-.teacher-spotlight {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    background: linear-gradient(45deg, var(--card-bg), var(--accent));
-    border: 2px solid var(--primary);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    position: relative;
-    overflow: hidden;
-}
 
-.teacher-spotlight::before {
-    content: '✨ Class Teacher ✨';
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: var(--primary);
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    font-size: 0.9rem;
-    color: white;
-    opacity: 0.9;
-}
-
-.teacher-spotlight .student-photo {
-    width: 200px;
-    height: 200px;
-    border: 3px solid var(--primary);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-}
-
-.teacher-spotlight h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-}
-
-.teacher-spotlight p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.teacher-spotlight em {
-    color: var(--primary-light);
-}
-
-@media (max-width: 768px) {
+    /* Teacher Spotlight (for teacher card in student spotlights) */
     .teacher-spotlight {
-        grid-template-columns: 1fr;
-        text-align: center;
+      background: rgba(255, 255, 255, 0);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(7.4px);
+      -webkit-backdrop-filter: blur(7.4px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      background: linear-gradient(45deg, var(--card-bg), var(--accent));
+      border: 2px solid var(--primary);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      animation: teacherCardFade 1s ease-in;
     }
-    
+
+    .teacher-spotlight::before {
+      content: '✨ Class Teacher ✨';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      color: white;
+      opacity: 0.9;
+    }
+
     .teacher-spotlight .student-photo {
-        margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
     }
-}
 
-/* Add a subtle animation for the teacher card */
-.teacher-spotlight {
-    animation: teacherCardFade 1s ease-in;
-}
+    .teacher-spotlight h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
 
-@keyframes teacherCardFade {
-    from {
+    .teacher-spotlight p {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .teacher-spotlight em {
+      color: #5C3B21;
+    }
+
+    @keyframes teacherCardFade {
+      from {
         opacity: 0;
         transform: translateY(-20px);
-    }
-    to {
+      }
+      to {
         opacity: 1;
         transform: translateY(0);
+      }
     }
-}
-    </style>
+
+    /* Fun Fact Section */
+    .fun-fact-section {
+      text-align: center;
+      margin: 3rem 0;
+      animation: fadeIn 1s ease;
+    }
+    .fun-fact-section button {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-bottom: 1rem;
+    }
+    .fun-fact-section button:hover {
+      background: var(--primary);
+      transform: scale(1.1);
+    }
+    .fun-fact-section p {
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1>Class 9-D</h1>
-            <p>2024-2025: Our Unforgettable Journey</p>
-        </header>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>Class 9-D</h1>
+      <p>2024-2025: Our Unforgettable Journey</p>
+    </header>
 
-        <!-- Photo Gallery -->
-        <section class="gallery">
-            <div class="gallery-item">
-                <img src="Pics/ClassPhoto.jpg" alt="Class Photo">
-                <div class="gallery-caption">Class Photo Day</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Pics/ChildrensDay.jpg" alt="Sports Day">
-                <div class="gallery-caption">Childerns Day</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Pics/mmmm.jpg" alt="Science Fair">
-                <div class="gallery-caption">EXPO 2024</div>
-            </div>
-        </section>
+    <!-- Photo Gallery -->
+    <section class="gallery">
+      <div class="gallery-item">
+        <img src="Pics/ClassPhoto.jpg" alt="Class Photo">
+        <div class="gallery-caption">Class Photo Day</div>
+      </div>
+      <div class="gallery-item">
+        <img src="Pics/ChildrensDay.jpg" alt="Childerns Day">
+        <div class="gallery-caption">Children's Day</div>
+      </div>
+      <div class="gallery-item">
+        <img src="Pics/mmmm.jpg" alt="Science Fair">
+        <div class="gallery-caption">EXPO 2024</div>
+      </div>
+    </section>
 
-        <!--Gallery-->
-        <section class="memories-gallery">
-            <h2>Memories Gallery</h2>
-            <div class="memories-grid">
-                <div class="memory-item">
-                    <img src="Pics/mustafa.jpg" alt="Mustafa">
-                    <div class="memory-caption">Mustafa lmaoo</div>
-                </div>
-                <div class="memory-item">
-                    <img src="Pics/siyanah.jpg" alt="Siyan">
-                    <div class="memory-caption">Autistic siyan photo</div>
-                </div>
-                <div class="memory-item">
-                    <img src="Pics/group.jpg" alt="Childrens Day">
-                    <div class="memory-caption">Childrens Day</div>
-                </div>
-                <div class="memory-item">
-                    <img src="Pics/ahhh.jpg" alt="Teachers Day">
-                    <div class="memory-caption">Sinan 0.5</div>
-                </div>
-                <div class="memory-item video-item">
-                    <video controls>
-                        <source src="Pics/fight.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="memory-caption">Nilafar ma'am prank</div>
-                </div>
-                <div class="memory-item video-item">
-                    <video controls>
-                        <source src="Pics/maam.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="memory-caption">Nilafar ma'am prank</div>
-                </div>
-                <div class="memory-item video-item">
-                    <video controls>
-                        <source src="Pics/throw.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="memory-caption">Throwing Sinan</div>
-                </div>
-                <div class="memory-item video-item">
-                    <video controls>
-                        <source src="Pics/cake.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="memory-caption">Cuting the cake</div>
-                </div>
-                <div class="memory-item video-item">
-                    <video controls>
-                        <source src="Pics/steal.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="memory-caption">Steal the flower</div>
-                </div>
-                <div class="memory-item video-item">
-                    <video controls>
-                        <source src="Pics/expo.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="memory-caption">EXPO 2024</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Student Spotlights -->
-        <section class="spotlights">
-            <h1>Student Spotlights</h1>
-            <div class="spotlight-grid" id="spotlightGrid">
-                <!-- Student cards will be added here by JavaScript -->
-            </div>
-        </section>
-        <div class="audio-player">
-            <audio id="bgMusic" loop>
-                <source src="Pics/sweet.mp3" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-            <button id="toggleMusic" class="music-toggle">
-                <span class="music-icon">🎵</span>
-            </button>
+    <!-- Memories Gallery -->
+    <section class="memories-gallery">
+      <h2>Memories Gallery</h2>
+      <div class="memories-grid">
+        <div class="memory-item">
+          <img src="Pics/mustafa.jpg" alt="Mustafa">
+          <div class="memory-caption">Mustafa lmaoo</div>
         </div>
-        <section class="teacher-tribute">
-            <div class="tribute-content">
-                <div class="teacher-card">
-                    <img src="Pics/ClassTeacher.jpg" alt="Class Teacher" class="teacher-photo">
-                    <h2>Thank You, Ms. Nilafar</h2>
-                    <div class="quote-marks">❝</div>
-                    <p class="teacher-message">
-                        Dear Ms. Nilafar,
-                        
-                        Thank you for being more than just our teacher - you've been our guide, mentor, and sometimes even our partner in crime! Your patience with our chaos, your understanding during our struggles, and your encouragement in our achievements have made this year unforgettable. You've taught us not just our subjects, but also valuable life lessons that we'll carry forever.
-        
-                        You've handled our class's energy with grace and humor, turning even our most mischievous moments into learning opportunities. Your dedication to making sure we all succeed, while still letting us be ourselves, has made 9-D feel like a family.
-                        <br>
-                        <br>
-                        <strong>Messages from your students:</strong>
-                        <br>
-                        • Mustafa:<em> ”best teacher of 9th”</em>
-                        <br>
-                        • Aneeq:<em> ”it’s not nilafar maam it’s nilaFUR maam”</em>
-                        <br>
-                        • Sinan:<em> ”I hope your our class teacher in 10th”</em>
-                        <br>
-                        • Siyan:<em> ”One of the best teachers”</em>
-                        <br>
-                        • Shifa:<em> ”Mam your English was Englishing. but my discipline wasn't disciplining and iam sorry about that 😭 .I love you a lot 💗”</em>
+        <div class="memory-item">
+          <img src="Pics/siyanah.jpg" alt="Siyan">
+          <div class="memory-caption">Autistic siyan photo</div>
+        </div>
+        <div class="memory-item">
+          <img src="Pics/group.jpg" alt="Children's Day">
+          <div class="memory-caption">Children's Day</div>
+        </div>
+        <div class="memory-item">
+          <img src="Pics/ahhh.jpg" alt="Teachers Day">
+          <div class="memory-caption">Sinan 0.5</div>
+        </div>
+        <div class="memory-item video-item">
+          <video controls>
+            <source src="Pics/fight.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="memory-caption">Nilafar ma'am prank</div>
+        </div>
+        <div class="memory-item video-item">
+          <video controls>
+            <source src="Pics/maam.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="memory-caption">Nilafar ma'am prank</div>
+        </div>
+        <div class="memory-item video-item">
+          <video controls>
+            <source src="Pics/throw.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="memory-caption">Throwing Sinan</div>
+        </div>
+        <div class="memory-item video-item">
+          <video controls>
+            <source src="Pics/cake.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="memory-caption">Cutting the cake</div>
+        </div>
+        <div class="memory-item video-item">
+          <video controls>
+            <source src="Pics/steal.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="memory-caption">Steal the flower</div>
+        </div>
+        <div class="memory-item video-item">
+          <video controls>
+            <source src="Pics/expo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="memory-caption">EXPO 2024</div>
+        </div>
+      </div>
+    </section>
 
-                    </p>
-                    <div class="quote-marks closing">❞</div>
-                </div>
-        
-                <div class="class-message">
-                    <h2>To Class 9-D</h2>
-                    <div class="quote-marks">❝</div>
-                    <p>
-                        From first day jitters to final day tears, we've been through it all together. Every laugh we shared, every challenge we faced, and every memory we created has made this year special. We may have been the class that gave teachers headaches, but we were also the class that stuck together through thick and thin.
-        
-                        To all the friendships formed, the inside jokes created, the study sessions that turned into gossip sessions, and the countless moments that made our year memorable - thank you. Whether we were pranking teachers, struggling through math, or celebrating our achievements, we did it as one.
-        
-                        As we move forward, let's carry these memories with us. Here's to 9-D - the class that wasn't just a class, but a family of mischief-makers, dreamers, and friends for life!
-                    </p>
-                    <div class="quote-marks closing">❞</div>
-                </div>
-            </div>
-    <script>
-        
-        //data
-        const students = [
-            {
-                name: "Ms. Nilafar",
-                photo: "Pics/ClassTeacher.jpg",
-                achievement: "Being the Class Teacher of IX D is my proudest Achievement so far..",
-                quote: "Happy Teachers create Happy Classrooms..",
-                isTeacher: true
-            },
-            {
-                name: "skibidi rizzler (Aneeq)",
-                photo: "Pics/aneeq.png",
-                achievement: "i have achieved the title of being the skibidiest of everything and everyone (mirror mirror on the wall whos the skibidiest of them all?)",
-                quote: "i wanna go to mustafas house bruh"
-            },
-            {
-                name: "Femboy :P (Siyan)",
-                photo: "Pics/Siyan.png",
-                achievement: "Finished 100 animes in year, Weeb",
-                quote: "Lifes hard but Im harder"
-            },
-            {
-                name: "Twink :33 (Sinan)",
-                photo: "Pics/Sinan.jpg",
-                achievement: "Made this website, Part of UDST competition winning team",
-                quote: "i made this shi  :3"
-            },
-            {
-                name: "Swag (Hadi)",
-                photo: "Pics/Hadi.jpg",
-                achievement: "got interviewed by alkass sports channel as one of the underrated young talents",
-                quote: "swag it out"
-            },
-            {
-                name: "Alanoodles (Alanood)",
-                photo: "Pics/alnood.jpg",
-                achievement: "didn't get deported",
-                quote: "don't wank off"
-            },
-            {
-                name: "Shawarma (Shahama)",
-                photo: "Pics/Shahama.jpg",
-                achievement: "Consecutive school topper, Part of UDST competition winning team, Helped with this website",
-                quote: "Always at the top"
-            },
-            {
-                name: "chemmeen 🦐(Suha)",
-                photo: "Pics/Suha.jpg",
-                achievement: "shotput 2nd place, won hikmah exam, top 5 in arm wrestling",
-                quote: "always maths"
-            },
-            {
-                name: "Mufasa (Mustafa)",
-                photo: "Pics/Mustafapfp.jpg",
-                achievement: "Nilafar Mam's fav student 😤👅",
-                quote: "Just watch"
-            },
-            {
-                name: "MEGAMIND (Aafia)",
-                photo: "Pics/Aafia.jpg",
-                achievement: "Got picked by the school for U-19 team as a 13 year old, Long jump twice gold medalist",
-                quote: "Play hard, tease harder"
-            },
-            {
-                name: "manutd🗣 (Fardeen)",
-                photo: "Pics/Fardeen.jpg",
-                achievement: "Group Profile maker",
-                quote: "i like sleep"
-            },
-            {
-                name: "(Shifa)",
-                photo: "Pics/shifa.jpg",
-                achievement: "Got first prize in kalanjali oppana",
-                quote: "It's better to live than dying❤️‍🩹"
-            },
-            {
-                name: "Raising canes (Razeen)",
-                photo: "Pics/razeen.jpg",
-                achievement: "Part of the expo 2024 winning team",
-                quote: "am I even from 9D"
-            },
-            {
-                name: "Drunk (Hamda)",
-                photo: "Pics/Hamda.jpg",
-                achievement: "Gold medal in cluster, Got 25/25 in physics in model exam",
-                quote: "Don’t like it? I don’t care."
-            },
-            {
-                name: "(Aathifa)",
-                photo: "Pics/aathifa.jpg",
-                achievement: "Part of UDST competition winning team, Logo making 1st prize",
-                quote: ""
-            },
-            {
-                name: "(Reem)",
-                photo: "Pics/reem.jpg",
-                achievement: "Came to schl kinda regularly",
-                quote: "I love musicc"
-            },
-        ];
+    <!-- Student Spotlights -->
+    <section class="spotlights">
+      <h1>Student Spotlights</h1>
+      <div class="spotlight-grid" id="spotlightGrid">
+        <!-- Student cards will be added here by JavaScript -->
+      </div>
+    </section>
 
-        //the student card
-        function createStudentCards() {
-            const spotlightGrid = document.getElementById('spotlightGrid');
-            students.forEach(person => {
-            const card = document.createElement('div');
-            card.className = person.isTeacher ? 'student-card teacher-spotlight' : 'student-card';
-            card.innerHTML = `
-            <img src="${person.photo}" alt="${person.name}" class="student-photo">
-            <h3>${person.name}</h3>
-            <p>${person.achievement}</p>
-            <p><em>"${person.quote}"</em></p>
-            `;
-            spotlightGrid.appendChild(card);
+    <!-- Fun Fact Section -->
+    <section class="fun-fact-section">
+      <button id="funFactButton">Click for a Fun Fact!</button>
+      <p id="funFactText"></p>
+    </section>
+
+    <!-- Teacher Tribute -->
+    <section class="teacher-tribute">
+      <div class="tribute-content">
+        <div class="teacher-card">
+          <img src="Pics/ClassTeacher.jpg" alt="Class Teacher" class="teacher-photo">
+          <h2>Thank You, Ms. Nilafar</h2>
+          <div class="quote-marks">❝</div>
+          <p class="teacher-message">
+            Dear Ms. Nilafar,<br><br>
+            Thank you for being more than just our teacher - you've been our guide, mentor, and sometimes even our partner in crime! Your patience with our chaos, your understanding during our struggles, and your encouragement in our achievements have made this year unforgettable. You've taught us not just our subjects, but also valuable life lessons that we'll carry forever.<br><br>
+            You've handled our class's energy with grace and humor, turning even our most mischievous moments into learning opportunities. Your dedication to making sure we all succeed, while still letting us be ourselves, has made 9-D feel like a family.<br><br>
+            <strong>Messages from your students:</strong><br>
+            • Mustafa: <em>"best teacher of 9th"</em><br>
+            • Aneeq: <em>"it’s not nilafar maam it’s nilaFUR maam"</em><br>
+            • Sinan: <em>"I hope your our class teacher in 10th"</em><br>
+            • Siyan: <em>"One of the best teachers"</em><br>
+            • Shifa: <em>"Mam your English was Englishing. but my discipline wasn't disciplining and I am sorry about that 😭. I love you a lot 💗"</em>
+          </p>
+          <div class="quote-marks closing">❞</div>
+        </div>
+
+        <div class="class-message">
+          <h2>To Class 9-D</h2>
+          <div class="quote-marks">❝</div>
+          <p>
+            From first day jitters to final day tears, we've been through it all together. Every laugh we shared, every challenge we faced, and every memory we created has made this year special. We may have been the class that gave teachers headaches, but we were also the class that stuck together through thick and thin.<br><br>
+            To all the friendships formed, the inside jokes created, the study sessions that turned into gossip sessions, and the countless moments that made our year memorable - thank you. Whether we were pranking teachers, struggling through math, or celebrating our achievements, we did it as one.<br><br>
+            As we move forward, let's carry these memories with us. Here's to 9-D - the class that wasn't just a class, but a family of mischief-makers, dreamers, and friends for life!
+          </p>
+          <div class="quote-marks closing">❞</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Audio Player -->
+  <div class="audio-player">
+    <audio id="bgMusic" loop>
+      <source src="Pics/sweet.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+    <button id="toggleMusic" class="music-toggle">
+      <span class="music-icon">🎵</span>
+    </button>
+  </div>
+
+  <script>
+    // Data for Student Spotlights
+    const students = [
+      {
+        name: "Ms. Nilafar",
+        photo: "Pics/ClassTeacher.jpg",
+        achievement: "Being the Class Teacher of IX D is my proudest Achievement so far..",
+        quote: "Happy Teachers create Happy Classrooms..",
+        isTeacher: true
+      },
+      {
+        name: "skibidi rizzler (Aneeq)",
+        photo: "Pics/aneeq.png",
+        achievement: "I have achieved the title of being the skibidiest of everything and everyone (mirror mirror on the wall who's the skibidiest of them all?)",
+        quote: "I wanna go to Mustafa's house bruh"
+      },
+      {
+        name: "Femboy :P (Siyan)",
+        photo: "Pics/Siyan.png",
+        achievement: "Finished 100 animes in a year, Weeb",
+        quote: "Life's hard but I'm harder"
+      },
+      {
+        name: "Twink :33 (Sinan)",
+        photo: "Pics/Sinan.jpg",
+        achievement: "Made this website, Part of UDST competition winning team",
+        quote: "I made this shi :3"
+      },
+      {
+        name: "Swag (Hadi)",
+        photo: "Pics/Hadi.jpg",
+        achievement: "Got interviewed by Alkass Sports Channel as one of the underrated young talents",
+        quote: "Swag it out"
+      },
+      {
+        name: "Alanoodles (Alanood)",
+        photo: "Pics/alnood.jpg",
+        achievement: "Didn't get deported",
+        quote: "Don't wank off"
+      },
+      {
+        name: "Shawarma (Shahama)",
+        photo: "Pics/Shahama.jpg",
+        achievement: "Consecutive school topper, Part of UDST competition winning team, Helped with this website",
+        quote: "Always at the top"
+      },
+      {
+        name: "chemmeen 🦐(Suha)",
+        photo: "Pics/Suha.jpg",
+        achievement: "Shotput 2nd place, won Hikmah exam, top 5 in arm wrestling",
+        quote: "Always maths"
+      },
+      {
+        name: "Mufasa (Mustafa)",
+        photo: "Pics/Mustafapfp.jpg",
+        achievement: "Nilafar Mam's fav student 😤👅",
+        quote: "Just watch"
+      },
+      {
+        name: "MEGAMIND (Aafia)",
+        photo: "Pics/Aafia.jpg",
+        achievement: "Got picked by the school for U-19 team as a 13 year old, Long jump twice gold medalist",
+        quote: "Play hard, tease harder"
+      },
+      {
+        name: "manutd🗣 (Fardeen)",
+        photo: "Pics/Fardeen.jpg",
+        achievement: "Group Profile maker",
+        quote: "I like sleep"
+      },
+      {
+        name: "(Shifa)",
+        photo: "Pics/shifa.jpg",
+        achievement: "Got first prize in Kalanjali Oppana",
+        quote: "It's better to live than dying ❤️‍🩹"
+      },
+      {
+        name: "Raising canes (Razeen)",
+        photo: "Pics/razeen.jpg",
+        achievement: "Part of the EXPO 2024 winning team",
+        quote: "Am I even from 9D?"
+      },
+      {
+        name: "Drunk (Hamda)",
+        photo: "Pics/Hamda.jpg",
+        achievement: "Gold medal in cluster, Got 25/25 in physics in model exam",
+        quote: "Don’t like it? I don’t care."
+      },
+      {
+        name: "(Aathifa)",
+        photo: "Pics/aathifa.jpg",
+        achievement: "Part of UDST competition winning team, Logo making 1st prize",
+        quote: ""
+      },
+      {
+        name: "(Reem)",
+        photo: "Pics/reem.jpg",
+        achievement: "Came to school kinda regularly",
+        quote: "I love music"
+      },
+    ];
+
+    // Function to create Student Cards
+    function createStudentCards() {
+      const spotlightGrid = document.getElementById('spotlightGrid');
+      students.forEach(person => {
+        const card = document.createElement('div');
+        card.className = person.isTeacher ? 'student-card teacher-spotlight' : 'student-card';
+        card.innerHTML = `
+          <img src="${person.photo}" alt="${person.name}" class="student-photo">
+          <h3>${person.name}</h3>
+          <p>${person.achievement}</p>
+          <p><em>"${person.quote}"</em></p>
+        `;
+        spotlightGrid.appendChild(card);
+      });
+    }
+
+    // Initialize student cards on page load
+    window.addEventListener('load', () => {
+      createStudentCards();
     });
-}
 
-
-        //start page
-        window.addEventListener('load', () => {
-            createStudentCards();
+    // Smooth scrolling for anchor links (if any)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
+      });
+    });
 
-        //dono if these work but smooth scrolling 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    // Gallery hover effect
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('mouseover', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      item.addEventListener('mouseout', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
 
-        //gallery hover effect
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('mouseover', function() {
-                this.style.transform = 'scale(1.05)';
-            });
-            item.addEventListener('mouseout', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-    const audio = document.getElementById('bgMusic');
-    const toggleButton = document.getElementById('toggleMusic');
-    
-    //song player thing
-    document.addEventListener('click', function initAudio() {
+    // Audio player initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      const audio = document.getElementById('bgMusic');
+      const toggleButton = document.getElementById('toggleMusic');
+
+      // Start audio on first click (for autoplay)
+      document.addEventListener('click', function initAudio() {
         audio.play().catch(function(error) {
-            console.log("Audio autoplay failed:", error);
+          console.log("Audio autoplay failed:", error);
         });
         document.removeEventListener('click', initAudio);
-    }, { once: true });
-    
-    toggleButton.addEventListener('click', function() {
-        if (audio.paused) {
-            audio.play();
-            toggleButton.classList.add('playing');
-        } else {
-            audio.pause();
-            toggleButton.classList.remove('playing');
-        }
-    });
-});
-    </script>
+      }, { once: true });
 
+      toggleButton.addEventListener('click', function() {
+        if (audio.paused) {
+          audio.play();
+          toggleButton.classList.add('playing');
+        } else {
+          audio.pause();
+          toggleButton.classList.remove('playing');
+        }
+      });
+    });
+
+    // Fun Fact Feature
+    const funFacts = [
+      "Did you know? Class 9-D once organized an impromptu dance-off during lunch break!",
+      "Fun Fact: The secret snack stash in 9-D is legendary!",
+      "Trivia: 9-D students can solve a Rubik's cube in under a minute!",
+      "Did you know? There's a hidden talent show among the students of 9-D.",
+      "Fun Fact: 9-D once turned a boring class into a spontaneous karaoke session!"
+    ];
+
+    const funFactButton = document.getElementById('funFactButton');
+    const funFactText = document.getElementById('funFactText');
+
+    funFactButton.addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * funFacts.length);
+      funFactText.textContent = funFacts[randomIndex];
+      launchConfetti();
+    });
+
+    // Confetti effect function
+    function launchConfetti() {
+      const confettiColors = ['#FFB347', '#FF9EB5', '#D8BFD8', '#FFD699'];
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        confetti.style.top = Math.random() * 100 + '%';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.opacity = 0.8;
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.animation = 'fall 2s linear forwards';
+        document.body.appendChild(confetti);
+        setTimeout(() => { confetti.remove(); }, 2000);
+      }
+    }
+  </script>
+</body>
 </html>
