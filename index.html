@@ -124,6 +124,17 @@
     .spotlights {
       margin: 4rem 0;
     }
+    .spotlights h1{
+        text-align: center;
+        font-size: 3rem;
+      /* Use a playful script font */
+      font-family: 'Pacifico', cursive;
+      /* Apply a fun gradient text effect */
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
+    }
 
     .spotlight-grid {
       display: grid;
@@ -318,10 +329,15 @@
     }
 
     .memories-gallery h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--primary);
-      font-size: 2.5rem;
+        text-align: center;
+      font-size: 3rem;
+      /* Use a playful script font */
+      font-family: 'Pacifico', cursive;
+      /* Apply a fun gradient text effect */
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
     }
 
     .memories-grid {
@@ -694,7 +710,8 @@
 
     <!-- Student Spotlights -->
     <section class="spotlights">
-      <h1>Student Spotlights</h1>
+      <h1>Class Spotlights</h1>
+      <br>
       <div class="spotlight-grid" id="spotlightGrid">
         <!-- Student cards will be added here by JavaScript -->
       </div>
