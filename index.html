@@ -124,7 +124,17 @@
             .spotlights {
             margin: 4rem 0;
         }
-
+        .spotlights h1{
+          text-align: center;
+          font-size: 3rem;
+      /* Use a playful script font */
+      font-family: 'Pacifico', cursive;
+      /* Apply a fun gradient text effect */
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
+        }
         .spotlight-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -498,7 +508,6 @@
       margin-bottom: 2rem;
     }
 
-    /* Teacher Spotlight (for teacher card in student spotlights) */
     .teacher-spotlight {
       background: rgba(255, 255, 255, 0);
       border-radius: 16px;
@@ -517,6 +526,10 @@
       position: relative;
       overflow: hidden;
       animation: teacherCardFade 1s ease-in;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centers content */
+      text-align: center; /* Ensures text is centered */
     }
 
     .teacher-spotlight::before {
@@ -543,11 +556,14 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--text);
-    }
+  }
+    
 
     .teacher-spotlight p {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
+      font-size: 1rem;
+      padding: 0 1rem;
     }
 
     .teacher-spotlight em {
@@ -598,6 +614,10 @@
     <header class="header">
       <h1>Class 9-D</h1>
       <p>2024-2025: Our Unforgettable Journey</p>
+      <section class="fun-fact-section">
+        <button id="funFactButton">Click Me!</button>
+        <p id="funFactText"></p>
+      </section>
     </header>
 
     <!-- Photo Gallery -->
@@ -690,11 +710,6 @@
       </div>
     </section>
 
-    <!-- Fun Fact Section -->
-    <section class="fun-fact-section">
-      <button id="funFactButton">Click for a Fun Fact!</button>
-      <p id="funFactText"></p>
-    </section>
 
     <!-- Teacher Tribute -->
     <section class="teacher-tribute">
@@ -713,6 +728,7 @@
             • Sinan: <em>"I hope your our class teacher in 10th"</em><br>
             • Siyan: <em>"One of the best teachers"</em><br>
             • Shifa: <em>"Mam your English was Englishing. but my discipline wasn't disciplining and I am sorry about that 😭. I love you a lot 💗"</em>
+            • Aathifa: <em>"Love u so muchhhh. alwaaysss our NilaFurrrr cozzyyyy mam"</em>
           </p>
           <div class="quote-marks closing">❞</div>
         </div>
@@ -911,7 +927,10 @@
 
     // Fun Fact Feature
     const funFacts = [
-      "hh"
+      "I will miss you guys",
+      "Imagine 9-D becomes 10-D",
+      "Best class frrr",
+
       
     ];
 
@@ -939,7 +958,7 @@
         confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
         confetti.style.animation = 'fall 2s linear forwards';
         document.body.appendChild(confetti);
-        setTimeout(() => { confetti.remove(); }, 2000);
+        
       }
     }
   </script>
