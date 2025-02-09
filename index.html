@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Class 9-D Memories 2024-25</title>
   <!-- Import a fun font for the header -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary: #FFB347;        /* Honey gold */
@@ -89,7 +89,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
@@ -124,17 +124,6 @@
     .spotlights {
       margin: 4rem 0;
     }
-    .spotlights h1{
-        text-align: center;
-        font-size: 3rem;
-      /* Use a playful script font */
-      font-family: 'Pacifico', cursive;
-      /* Apply a fun gradient text effect */
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
-    }
 
     .spotlight-grid {
       display: grid;
@@ -146,14 +135,14 @@
       background: white;
       border-radius: 1rem;
       padding: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       cursor: pointer;
     }
 
     .student-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
     }
 
     .student-photo {
@@ -171,7 +160,7 @@
       border-radius: 1rem;
       padding: 2rem;
       margin: 3rem 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .message-form {
@@ -254,7 +243,7 @@
       background: white;
       padding: 1.5rem;
       border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       width: 45%;
       position: relative;
       animation: fadeIn 1s ease;
@@ -279,65 +268,16 @@
       margin-left: 50%;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 3rem;
-      }
-      .timeline::before {
-        left: 0;
-      }
-      .timeline-content {
-        width: 90%;
-        margin: 0 0 0 10% !important;
-      }
-      .timeline-content::before {
-        left: -30px;
-      }
-      .memories-grid {
-        grid-template-columns: 1fr;
-      }
-      .memory-item.featured {
-        grid-column: auto;
-        grid-row: auto;
-      }
-      .teacher-tribute {
-        margin: 3rem 0;
-      }
-      .teacher-card, .class-message {
-        padding: 2rem;
-      }
-      .quote-marks {
-        font-size: 3rem;
-      }
-      .teacher-message, .class-message p {
-        padding: 0 1rem;
-        font-size: 1rem;
-      }
-      .teacher-spotlight {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .teacher-spotlight .student-photo {
-        margin: 0 auto;
-      }
-    }
-
     /* Memories Gallery */
     .memories-gallery {
       margin: 4rem 0;
     }
 
     .memories-gallery h2 {
-        text-align: center;
-      font-size: 3rem;
-      /* Use a playful script font */
-      font-family: 'Pacifico', cursive;
-      /* Apply a fun gradient text effect */
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-size: 2.5rem;
     }
 
     .memories-grid {
@@ -351,7 +291,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
@@ -397,7 +337,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
@@ -427,7 +367,7 @@
       width: 40px;
       height: 40px;
       cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -469,7 +409,7 @@
       background: var(--card-bg);
       border-radius: 1rem;
       padding: 3rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       position: relative;
       border: 1px solid var(--border);
       transition: transform 0.3s ease;
@@ -617,6 +557,53 @@
       font-size: 1.2rem;
       color: var(--text);
     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 3rem;
+      }
+      .timeline::before {
+        left: 0;
+      }
+      .timeline-content {
+        width: 90%;
+        margin: 0 0 0 10% !important;
+      }
+      .timeline-content::before {
+        left: -30px;
+      }
+      /* Removed media query rules for the memories-grid to maintain the PC layout on mobile */
+      /*
+      .memories-grid {
+        grid-template-columns: 1fr;
+      }
+      .memory-item.featured {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      */
+      .teacher-tribute {
+        margin: 3rem 0;
+      }
+      .teacher-card, .class-message {
+        padding: 2rem;
+      }
+      .quote-marks {
+        font-size: 3rem;
+      }
+      .teacher-message, .class-message p {
+        padding: 0 1rem;
+        font-size: 1rem;
+      }
+      .teacher-spotlight {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .teacher-spotlight .student-photo {
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -630,15 +617,15 @@
     <!-- Photo Gallery -->
     <section class="gallery">
       <div class="gallery-item">
-        <img src="Pics/ClassPhoto.jpg" alt="Class Photo">
+        <img src="Pics/ClassPhoto.jpg" alt="Class Photo" />
         <div class="gallery-caption">Class Photo Day</div>
       </div>
       <div class="gallery-item">
-        <img src="Pics/ChildrensDay.jpg" alt="Childerns Day">
+        <img src="Pics/ChildrensDay.jpg" alt="Children's Day" />
         <div class="gallery-caption">Children's Day</div>
       </div>
       <div class="gallery-item">
-        <img src="Pics/mmmm.jpg" alt="Science Fair">
+        <img src="Pics/mmmm.jpg" alt="Science Fair" />
         <div class="gallery-caption">EXPO 2024</div>
       </div>
     </section>
@@ -648,59 +635,59 @@
       <h2>Memories Gallery</h2>
       <div class="memories-grid">
         <div class="memory-item">
-          <img src="Pics/mustafa.jpg" alt="Mustafa">
+          <img src="Pics/mustafa.jpg" alt="Mustafa" />
           <div class="memory-caption">Mustafa lmaoo</div>
         </div>
         <div class="memory-item">
-          <img src="Pics/siyanah.jpg" alt="Siyan">
+          <img src="Pics/siyanah.jpg" alt="Siyan" />
           <div class="memory-caption">Autistic siyan photo</div>
         </div>
         <div class="memory-item">
-          <img src="Pics/group.jpg" alt="Children's Day">
+          <img src="Pics/group.jpg" alt="Children's Day" />
           <div class="memory-caption">Children's Day</div>
         </div>
         <div class="memory-item">
-          <img src="Pics/ahhh.jpg" alt="Teachers Day">
+          <img src="Pics/ahhh.jpg" alt="Teachers Day" />
           <div class="memory-caption">Sinan 0.5</div>
         </div>
         <div class="memory-item video-item">
           <video controls>
-            <source src="Pics/fight.mp4" type="video/mp4">
+            <source src="Pics/fight.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="memory-caption">Nilafar ma'am prank</div>
         </div>
         <div class="memory-item video-item">
           <video controls>
-            <source src="Pics/maam.mp4" type="video/mp4">
+            <source src="Pics/maam.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="memory-caption">Nilafar ma'am prank</div>
         </div>
         <div class="memory-item video-item">
           <video controls>
-            <source src="Pics/throw.mp4" type="video/mp4">
+            <source src="Pics/throw.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="memory-caption">Throwing Sinan</div>
         </div>
         <div class="memory-item video-item">
           <video controls>
-            <source src="Pics/cake.mp4" type="video/mp4">
+            <source src="Pics/cake.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="memory-caption">Cutting the cake</div>
         </div>
         <div class="memory-item video-item">
           <video controls>
-            <source src="Pics/steal.mp4" type="video/mp4">
+            <source src="Pics/steal.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="memory-caption">Steal the flower</div>
         </div>
         <div class="memory-item video-item">
           <video controls>
-            <source src="Pics/expo.mp4" type="video/mp4">
+            <source src="Pics/expo.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="memory-caption">EXPO 2024</div>
@@ -710,8 +697,7 @@
 
     <!-- Student Spotlights -->
     <section class="spotlights">
-      <h1>Class Spotlights</h1>
-      <br>
+      <h1>Student Spotlights</h1>
       <div class="spotlight-grid" id="spotlightGrid">
         <!-- Student cards will be added here by JavaScript -->
       </div>
@@ -727,18 +713,18 @@
     <section class="teacher-tribute">
       <div class="tribute-content">
         <div class="teacher-card">
-          <img src="Pics/ClassTeacher.jpg" alt="Class Teacher" class="teacher-photo">
+          <img src="Pics/ClassTeacher.jpg" alt="Class Teacher" class="teacher-photo" />
           <h2>Thank You, Ms. Nilafar</h2>
           <div class="quote-marks">❝</div>
           <p class="teacher-message">
-            Dear Ms. Nilafar,<br><br>
-            Thank you for being more than just our teacher - you've been our guide, mentor, and sometimes even our partner in crime! Your patience with our chaos, your understanding during our struggles, and your encouragement in our achievements have made this year unforgettable. You've taught us not just our subjects, but also valuable life lessons that we'll carry forever.<br><br>
-            You've handled our class's energy with grace and humor, turning even our most mischievous moments into learning opportunities. Your dedication to making sure we all succeed, while still letting us be ourselves, has made 9-D feel like a family.<br><br>
-            <strong>Messages from your students:</strong><br>
-            • Mustafa: <em>"best teacher of 9th"</em><br>
-            • Aneeq: <em>"it’s not nilafar maam it’s nilaFUR maam"</em><br>
-            • Sinan: <em>"I hope your our class teacher in 10th"</em><br>
-            • Siyan: <em>"One of the best teachers"</em><br>
+            Dear Ms. Nilafar,<br /><br />
+            Thank you for being more than just our teacher - you've been our guide, mentor, and sometimes even our partner in crime! Your patience with our chaos, your understanding during our struggles, and your encouragement in our achievements have made this year unforgettable. You've taught us not just our subjects, but also valuable life lessons that we'll carry forever.<br /><br />
+            You've handled our class's energy with grace and humor, turning even our most mischievous moments into learning opportunities. Your dedication to making sure we all succeed, while still letting us be ourselves, has made 9-D feel like a family.<br /><br />
+            <strong>Messages from your students:</strong><br />
+            • Mustafa: <em>"best teacher of 9th"</em><br />
+            • Aneeq: <em>"it’s not nilafar maam it’s nilaFUR maam"</em><br />
+            • Sinan: <em>"I hope your our class teacher in 10th"</em><br />
+            • Siyan: <em>"One of the best teachers"</em><br />
             • Shifa: <em>"Mam your English was Englishing. but my discipline wasn't disciplining and I am sorry about that 😭. I love you a lot 💗"</em>
           </p>
           <div class="quote-marks closing">❞</div>
@@ -748,8 +734,8 @@
           <h2>To Class 9-D</h2>
           <div class="quote-marks">❝</div>
           <p>
-            From first day jitters to final day tears, we've been through it all together. Every laugh we shared, every challenge we faced, and every memory we created has made this year special. We may have been the class that gave teachers headaches, but we were also the class that stuck together through thick and thin.<br><br>
-            To all the friendships formed, the inside jokes created, the study sessions that turned into gossip sessions, and the countless moments that made our year memorable - thank you. Whether we were pranking teachers, struggling through math, or celebrating our achievements, we did it as one.<br><br>
+            From first day jitters to final day tears, we've been through it all together. Every laugh we shared, every challenge we faced, and every memory we created has made this year special. We may have been the class that gave teachers headaches, but we were also the class that stuck together through thick and thin.<br /><br />
+            To all the friendships formed, the inside jokes created, the study sessions that turned into gossip sessions, and the countless moments that made our year memorable - thank you. Whether we were pranking teachers, struggling through math, or celebrating our achievements, we did it as one.<br /><br />
             As we move forward, let's carry these memories with us. Here's to 9-D - the class that wasn't just a class, but a family of mischief-makers, dreamers, and friends for life!
           </p>
           <div class="quote-marks closing">❞</div>
@@ -761,7 +747,7 @@
   <!-- Audio Player -->
   <div class="audio-player">
     <audio id="bgMusic" loop>
-      <source src="Pics/sweet.mp3" type="audio/mp3">
+      <source src="Pics/sweet.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
     </audio>
     <button id="toggleMusic" class="music-toggle">
