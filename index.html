@@ -120,13 +120,178 @@
       transform: translateY(0);
     }
 
-    /* Student Spotlights */
-    .spotlights {
-      margin: 4rem 0;
-    }
-    .spotlights h1{
-        text-align: center;
-        font-size: 3rem;
+            /* Student Spotlights */
+            .spotlights {
+            margin: 4rem 0;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .student-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Messages Wall */
+        .messages-wall {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .message-form {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .message-form input,
+        .message-form textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+        }
+
+        .messages-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .message {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Interactive Timeline */
+        .timeline {
+            position: relative;
+            margin: 4rem 0;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 50%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-content {
+                width: 90%;
+                margin: 0 0 0 10% !important;
+            }
+
+            .timeline-content::before {
+                left: -30px;
+            }
+        }
+        .memories-gallery {
+    margin: 4rem 0;
+}
+
+.memories-gallery h2 {
+    text-align: center;
+    font-size: 3rem;
       /* Use a playful script font */
       font-family: 'Pacifico', cursive;
       /* Apply a fun gradient text effect */
@@ -134,323 +299,133 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
-    }
+}
 
-    .spotlight-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
 
-    .student-card {
-      background: white;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+.memory-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
 
-    .student-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-    }
+.memory-item:hover {
+    transform: scale(1.02);
+}
 
-    .student-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      display: block;
-      object-fit: cover;
-    }
+.memory-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
 
-    /* Messages Wall */
-    .messages-wall {
-      background: white;
-      border-radius: 1rem;
-      padding: 2rem;
-      margin: 3rem 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
+.memory-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 158, 181, 0.9), rgba(255, 179, 71, 0.9));
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
 
-    .message-form {
-      display: grid;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
+.memory-item:hover .memory-caption {
+    transform: translateY(0);
+}
 
-    .message-form input,
-    .message-form textarea {
-      padding: 0.8rem;
-      border: 1px solid #ddd;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-    }
+/* Make first item span two columns and rows */
+.memory-item.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+}
 
-    .btn {
-      background: var(--secondary);
-      transition: all 0.3s ease;
-    }
+.memory-item.featured img {
+    height: 100%;
+}
 
-    .btn:hover {
-      background: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .messages-container {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .message {
-      background: var(--bg-light);
-      padding: 1rem;
-      border-radius: 0.5rem;
-      animation: slideIn 0.3s ease;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(-20px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    /* Confetti Animation */
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-
-    /* Interactive Timeline */
-    .timeline {
-      position: relative;
-      margin: 4rem 0;
-      padding: 2rem 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--primary);
-    }
-
-    .timeline-item {
-      display: flex;
-      justify-content: center;
-      padding: 2rem 0;
-    }
-
-    .timeline-content {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      width: 45%;
-      position: relative;
-      animation: fadeIn 1s ease;
-    }
-
-    .timeline-content::before {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 50%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      margin-right: 50%;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      margin-left: 50%;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 3rem;
-      }
-      .timeline::before {
-        left: 0;
-      }
-      .timeline-content {
-        width: 90%;
-        margin: 0 0 0 10% !important;
-      }
-      .timeline-content::before {
-        left: -30px;
-      }
-      .memories-grid {
+@media (max-width: 768px) {
+    .memories-grid {
         grid-template-columns: 1fr;
-      }
-      .memory-item.featured {
+    }
+    
+    .memory-item.featured {
         grid-column: auto;
         grid-row: auto;
-      }
-      .teacher-tribute {
-        margin: 3rem 0;
-      }
-      .teacher-card, .class-message {
-        padding: 2rem;
-      }
-      .quote-marks {
-        font-size: 3rem;
-      }
-      .teacher-message, .class-message p {
-        padding: 0 1rem;
-        font-size: 1rem;
-      }
-      .teacher-spotlight {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .teacher-spotlight .student-photo {
-        margin: 0 auto;
-      }
     }
+}
+.video-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
 
-    /* Memories Gallery */
-    
+.video-item video {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
 
-    .memories-gallery h2 {
-        text-align: center;
-      font-size: 3rem;
-      /* Use a playful script font */
-      font-family: 'Pacifico', cursive;
-      /* Apply a fun gradient text effect */
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(255, 158, 181, 0.2);
-    }
+.video-item:hover {
+    transform: scale(1.02);
+}
+.body h1 {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .audio-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
 
-    .memories-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
+.music-toggle {
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
 
-    .memory-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
+.music-toggle:hover {
+    transform: scale(1.1);
+}
 
-    .memory-item:hover {
-      transform: scale(1.02);
-    }
+.music-icon {
+    color: white;
+    font-size: 20px;
+}
 
-    .memory-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
+.music-toggle.playing {
+    animation: pulse 2s infinite;
+}
 
-    .memory-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to right, rgba(255, 158, 181, 0.9), rgba(255, 179, 71, 0.9));
-      color: white;
-      padding: 1rem;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .memory-item:hover .memory-caption {
-      transform: translateY(0);
-    }
-
-    /* Featured memory item */
-    .memory-item.featured {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .memory-item.featured img {
-      height: 100%;
-    }
-
-    /* Video items in memories */
-    .video-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-
-    .video-item video {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .video-item:hover {
-      transform: scale(1.02);
-    }
-
-    /* Audio Player */
-    .audio-player {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-
-    .music-toggle {
-      background: var(--primary);
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-    }
-
-    .music-toggle:hover {
-      transform: scale(1.1);
-    }
-
-    .music-icon {
-      color: white;
-      font-size: 20px;
-    }
-
-    .music-toggle.playing {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
     /* Teacher Tribute */
     .teacher-tribute {
       margin: 6rem 0;
@@ -936,12 +911,7 @@
 
     // Fun Fact Feature
     const funFacts = [
-      "Did you know? Class 9-D won 3 out of 4 prizes in EXPO 2024",
-      "Fun Fact: Class 9-D has the school topper shahama",
-      "Trivia: Some class 9-D students was in the UDST winning team!",
-      "Did you know? Sinan made this website",
-      "Fun Fact: 9-D has the best class teacher!",
-      "Trivia: Nilafar ma'ams secret nickname is Pilafar ma'am",
+      "hh"
       
     ];
 
